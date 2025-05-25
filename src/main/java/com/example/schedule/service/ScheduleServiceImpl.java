@@ -3,6 +3,7 @@ package com.example.schedule.service;
 import com.example.schedule.dto.request.Schedule2RequestDto;
 import com.example.schedule.dto.request.ScheduleDeleteRequestDto;
 import com.example.schedule.dto.request.ScheduleRequestDto;
+import com.example.schedule.dto.request.ScheduleUpdateRequestDto;
 import com.example.schedule.dto.response.Schedule2ResponseDto;
 import com.example.schedule.dto.response.Schedule3ResponseDto;
 import com.example.schedule.dto.response.ScheduleResponseDto;
@@ -56,7 +57,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Transactional
     @Override // Lv2. 선택 일정 수정
-    public ScheduleResponseDto updateSchedule(Long id, ScheduleRequestDto dto) {
+    public ScheduleResponseDto updateSchedule(Long id, ScheduleUpdateRequestDto dto) {
         // 일정 조회 및 비밀번호 확인
         Schedule schedule = scheduleRepository.findScheduleById(id).orElseThrow(() -> new ScheduleNotFoundException("해당 ID(" + id + ")에 해당하는 일정이 존재하지 않습니다."));
         if (!schedule.getPassword().equals(dto.getPassword())) {

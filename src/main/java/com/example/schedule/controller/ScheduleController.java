@@ -3,6 +3,7 @@ package com.example.schedule.controller;
 import com.example.schedule.dto.request.Schedule2RequestDto;
 import com.example.schedule.dto.request.ScheduleDeleteRequestDto;
 import com.example.schedule.dto.request.ScheduleRequestDto;
+import com.example.schedule.dto.request.ScheduleUpdateRequestDto;
 import com.example.schedule.dto.response.Schedule2ResponseDto;
 import com.example.schedule.dto.response.Schedule3ResponseDto;
 import com.example.schedule.dto.response.ScheduleResponseDto;
@@ -46,7 +47,7 @@ public class ScheduleController {
     @PatchMapping("{id}") // Lv2. 선택 일정 수정
     public ResponseEntity<ScheduleResponseDto> updateSchedule(
             @PathVariable Long id,
-            @RequestBody @Valid ScheduleRequestDto dto) {
+            @RequestBody @Valid ScheduleUpdateRequestDto dto) {
         return new ResponseEntity<>(scheduleService.updateSchedule(id, dto), HttpStatus.OK);
     }
 
